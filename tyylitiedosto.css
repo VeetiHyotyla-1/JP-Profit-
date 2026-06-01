@@ -1,1 +1,259 @@
-a
+/* PERUSASETUKSET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b131f; /* Tosi tummansininen taustapohja */
+    color: #ffffff;
+}
+
+/* NAVIGOINTIPALKKI */
+.navbar {
+    background-color: #111a2e; /* Hieman vaaleampi tummansininen navigaatiolle */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 3px solid #ccff00; /* Huomioliivin keltainen tehosteviiva */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 24px;
+}
+
+.nav-logo {
+    color: #ccff00; /* Huomioliivin keltainen logo */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    height: 100%; /* Varmistaa, että lista täyttää navipalkin korkeuden */
+}
+
+.nav-item {
+    height: 80px;
+    display: flex;
+    align-items: center; /* Keskittää kaikki listan kohteet pystysuunnassa samalle riville */
+}
+
+.nav-link {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ccff00; /* Linkki muuttuu huomioväriksi kun hiiri on päällä */
+}
+
+/* Erillinen tyyli Kirjaudu-napille – samalla rivillä muiden kanssa */
+.btn-login {
+    background-color: #ccff00; /* Huomioliivin keltainen */
+    color: #0b131f !important; /* Tummansininen teksti */
+    font-weight: bold;
+    padding: 10px 20px !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    height: auto !important;
+    margin-left: 15px;
+}
+
+.btn-login:hover {
+    background-color: #ffffff; 
+    transform: scale(1.05);
+}
+
+.nav-toggle {
+    display: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* KOTI-SIVUN PÄÄSISÄLTÖ */
+.hero-osio {
+    background: linear-gradient(to bottom, rgba(11, 19, 31, 0.6), rgba(11, 19, 31, 0.95)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200') no-repeat center center/cover;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 50px; 
+}
+
+.hero-teksti {
+    flex: 1;
+    text-align: left; 
+}
+
+.hero-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.hero-container p {
+    font-size: 1.3rem;
+    color: #cbd5e1; /* Kevyt vaaleanharmaa teksti */
+}
+
+/* GALLERIA JA KARUSELLI */
+.hero-galleria {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 750px; /* Suurennettu leveyttä */
+    width: 100%;
+}
+
+.esittelykuva {
+    width: 100%;
+    height: 400px; /* Suurennettu hieman korkeutta paremman suhteen saamiseksi */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid #ccff00; /* Huomioliivin värinen raami kuvalle */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.esittelykuva img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: opacity 0.3s ease;
+}
+
+/* NUOLIPAINIKKEET */
+.nuoli-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(204, 255, 0, 0.85); /* Huomioväri läpinäkyvyydellä */
+    color: #0b131f; /* Tummansininen nuolikuvake */
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.nuoli-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.vasen {
+    left: -20px;
+}
+
+.oikea {
+    right: -20px;
+}
+
+/* RESPONSIVISUUS (Mobiililaitteet) */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: -400px; 
+        opacity: 0;
+        transition: all 0.5s ease;
+        background-color: #111a2e;
+        list-style: none;
+        height: auto;
+    }
+
+    .nav-menu.active {
+        top: 80px; 
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .nav-item {
+        width: 100%;
+        height: 60px;
+        display: block; /* Puretaan flex-keskitys mobiilissa */
+    }
+
+    .nav-link {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .btn-login {
+        margin: 10px auto 0 auto;
+        display: block;
+        width: 80%;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hero-container {
+        flex-direction: column; 
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .hero-teksti {
+        text-align: center;
+    }
+
+    .hero-container h1 {
+        font-size: 2rem;
+    }
+    
+    .vasen { left: 10px; }
+    .oikea { right: 10px; }
+}

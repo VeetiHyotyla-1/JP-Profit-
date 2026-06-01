@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JP-Profit - Kotisivut</title>
+    <title>JP-Profit</title>
     <link rel="stylesheet" href="tyylitiedosto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- NAVIGOINTIPALKKI (Palkkiaa) -->
-    <header>          
-        <nav class="navbar">
-            <div class="logo">Logo / Yrityksen nimi</div>
-            <div class="nav-links">
-                <a href="index.html" class="active">Koti</a>
-                <a href="#palvelut">Palvelut</a>
-                <a href="#lomake">Lomake</a>
-                <a href="#kirjaudu">Kirjaudu</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">JP-Profit</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Koti</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Lomake</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Ota yhteyttä</a></li>
+                <li class="nav-item"><a href="#" class="nav-link btn-login">Kirjaudu</a></li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-        </nav>
+        </div>
+    </nav>
+
+    <header class="hero-osio">
+        <div class="hero-container">
+            <div class="hero-teksti">
+                <h1>Testi pääteksti</h1>
+                <p>Testi alateksti</p>
+            </div>
+
+            <div class="hero-galleria">
+                <button class="nuoli-btn vasen" id="edellinen-kuva">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="esittelykuva">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600" id="galleria-kuva" alt="Työmaakuva">
+                </div>
+
+                <button class="nuoli-btn oikea" id="kuvanvaihto">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
     </header>
-
-    <!-- KOTI-SIVUN SISÄLTÖ -->
-    <main>
-        <section class="hero-section">
-            <div class="esittelyteksti">
-                <h1>JP-Profit kotisivu</h1>
-                <p>Muuta tekstiä</p>
-            </div>
-            
-            <div class="kuvakaruselli">
-                <!-- Tila kuville ja nuolille -->
-                <button class="nuoli-vasen">&lt;</button>
-                <div class="kuva-alue">Kuvia töistämme (Karuselli)</div>
-                <button class="nuoli-oikea">&gt;</button>
-            </div>
-        </section>
-    </main>
-
+    <script src="js.js"></script>
 </body>
 </html>
