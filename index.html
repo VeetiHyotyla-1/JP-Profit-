@@ -13,7 +13,7 @@
             <a href="#" class="nav-logo">JP-Profit</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link">Koti</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Lomake</a></li>
+                <li class="nav-item"><a href="#tarjouspyyntö" class="nav-link">Lomake</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Ota yhteyttä</a></li>
                 <li class="nav-item"><a href="#" class="nav-link btn-login">Kirjaudu</a></li>
             </ul>
@@ -45,6 +45,38 @@
             </div>
         </div>
     </header>
+
+    <section class="lomake-osio" id="tarjouspyyntö">
+        <div class="lomake-container">
+            <h2>Pyydä Tarjous</h2>
+            <p>Lomakkeessa voit jättää yhteydenottopyynnön tai tehdä esimerkiksi urakkatyötarjouksen.</p>
+            
+            <form class="tarjous-lomake">
+                <div class="lomake-ryhmä">
+                    <label for="nimi">Nimi / Yritys *</label>
+                    <input type="text" id="nimi" required placeholder="Etunimi Sukunimi tai Yritys">
+                </div>
+                
+                <div class="lomake-ryhmä">
+                    <label for="sahkoposti">Sähköposti *</label>
+                    <input type="email" id="sahkoposti" required placeholder="Sähköposti@esimerkki.fi">
+                </div>
+                
+                <div class="lomake-ryhmä">
+                    <label for="puhelin">Puhelinnumero</label>
+                    <input type="tel" id="puhelin" placeholder="040 123 4567">
+                </div>
+                
+                <div class="lomake-ryhmä">
+                    <label for="viesti">Työn kuvaus *</label>
+                    <textarea id="viesti" rows="5" required placeholder="Kerro lyhyesti mitä työtä tai urakkaa tarjoat..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-laheta">Lähetä tarjouspyyntö</button>
+            </form>
+        </div>
+    </section>
+
     <script src="js.js"></script>
 </body>
 </html>
