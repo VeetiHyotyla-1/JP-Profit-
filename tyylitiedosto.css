@@ -7,13 +7,13 @@
 }
 
 body {
-    background-color: #0b131f; /* Tosi tummansininen taustapohja */
+    background-color: #0b131f;
     color: #ffffff;
 }
 
 /* NAVIGOINTIPALKKI */
 .navbar {
-    background-color: #111a2e; /* Hieman vaaleampi tummansininen navigaatiolle */
+    background-color: #111a2e;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -21,7 +21,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 999;
-    border-bottom: 3px solid #ccff00; /* Huomioliivin keltainen tehosteviiva */
+    border-bottom: 3px solid #ccff00;
 }
 
 .nav-container {
@@ -35,7 +35,7 @@ body {
 }
 
 .nav-logo {
-    color: #ccff00; /* Huomioliivin keltainen logo */
+    color: #ccff00;
     font-size: 1.8rem;
     font-weight: bold;
     text-decoration: none;
@@ -47,13 +47,13 @@ body {
     align-items: center;
     list-style: none;
     text-align: center;
-    height: 100%; /* Varmistaa, että lista täyttää navipalkin korkeuden */
+    height: 100%;
 }
 
 .nav-item {
     height: 80px;
     display: flex;
-    align-items: center; /* Keskittää kaikki listan kohteet pystysuunnassa samalle riville */
+    align-items: center;
 }
 
 .nav-link {
@@ -67,13 +67,12 @@ body {
 }
 
 .nav-link:hover {
-    color: #ccff00; /* Linkki muuttuu huomioväriksi kun hiiri on päällä */
+    color: #ccff00;
 }
 
-/* Erillinen tyyli Kirjaudu-napille – samalla rivillä muiden kanssa */
 .btn-login {
-    background-color: #ccff00; /* Huomioliivin keltainen */
-    color: #0b131f !important; /* Tummansininen teksti */
+    background-color: #ccff00;
+    color: #0b131f !important;
     font-weight: bold;
     padding: 10px 20px !important;
     border-radius: 4px;
@@ -129,7 +128,29 @@ body {
 
 .hero-container p {
     font-size: 1.3rem;
-    color: #cbd5e1; /* Kevyt vaaleanharmaa teksti */
+    color: #cbd5e1;
+}
+
+.hero-yhteystiedot {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hero-yhteystiedot p {
+    font-size: 1.1rem !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-yhteystiedot i {
+    color: #ccff00;
+    font-size: 1.2rem;
+    width: 20px;
 }
 
 /* GALLERIA JA KARUSELLI */
@@ -139,24 +160,38 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    max-width: 750px; /* Suurennettu leveyttä */
+    max-width: 750px;
     width: 100%;
 }
 
 .esittelykuva {
     width: 100%;
-    height: 400px; /* Suurennettu hieman korkeutta paremman suhteen saamiseksi */
+    height: 400px;
     border-radius: 8px;
     overflow: hidden;
-    border: 3px solid #ccff00; /* Huomioliivin värinen raami kuvalle */
+    border: 3px solid #ccff00;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    position: relative;
+    background-color: #0b131f;
 }
 
 .esittelykuva img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover; 
-    transition: opacity 0.3s ease;
+    transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.esittelykuva img.active {
+    opacity: 1;
+    z-index: 2;
+    transform: translateX(0);
 }
 
 /* NUOLIPAINIKKEET */
@@ -164,8 +199,8 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(204, 255, 0, 0.85); /* Huomioväri läpinäkyvyydellä */
-    color: #0b131f; /* Tummansininen nuolikuvake */
+    background-color: rgba(204, 255, 0, 0.85);
+    color: #0b131f;
     border: none;
     width: 45px;
     height: 45px;
@@ -184,28 +219,23 @@ body {
     transform: translateY(-50%) scale(1.1);
 }
 
-.vasen {
-    left: -20px;
-}
-
-.oikea {
-    right: -20px;
-}
+.vasen { left: -20px; }
+.oikea { right: -20px; }
 
 /* LOMAKE-OSIO */
 .lomake-osio {
-    background-color: #111a2e; /* Sama tummansininen kuin navbaari */
+    background-color: #111a2e;
     padding: 80px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 2px solid rgba(204, 255, 0, 0.1); /* Kevyt raja osioiden väliin */
+    border-top: 2px solid rgba(204, 255, 0, 0.1);
 }
 
 .lomake-container {
     width: 100%;
-    max-width: 650px; /* Pitää lomakkeen napakkana */
-    background-color: #0b131f; /* Tummempi pohja laatikolle */
+    max-width: 650px;
+    background-color: #0b131f;
     padding: 40px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -214,7 +244,7 @@ body {
 
 .lomake-container h2 {
     font-size: 2.2rem;
-    color: #ccff00; /* Huomioliivin keltainen otsikko */
+    color: #ccff00;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -249,7 +279,7 @@ body {
 .lomake-ryhmä textarea {
     width: 100%;
     padding: 12px 16px;
-    background-color: #162238; /* Sisäänupotettu tumma sininen */
+    background-color: #162238;
     border: 2px solid #203354;
     border-radius: 4px;
     color: #ffffff;
@@ -258,10 +288,9 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Tekstikentän aktivointiefekti (Focus) */
 .lomake-ryhmä input:focus,
 .lomake-ryhmä textarea:focus {
-    border-color: #ccff00; /* Reuna muuttuu huomioväriksi */
+    border-color: #ccff00;
     background-color: #1a2942;
     box-shadow: 0 0 10px rgba(204, 255, 0, 0.2);
 }
@@ -290,7 +319,7 @@ body {
     box-shadow: 0 5px 15px rgba(204, 255, 0, 0.3);
 }
 
-/* RESPONSIVISUUS (Mobiililaitteet) */
+/* RESPONSIVISUUS */
 @media screen and (max-width: 768px) {
     .nav-menu {
         display: flex;
@@ -334,9 +363,7 @@ body {
         text-align: center;
     }
 
-    .nav-toggle {
-        display: block;
-    }
+    .nav-toggle { display: block; }
 
     .hero-container {
         flex-direction: column; 
@@ -344,24 +371,46 @@ body {
         gap: 30px;
     }
     
-    .hero-teksti {
-        text-align: center;
-    }
-
-    .hero-container h1 {
-        font-size: 2rem;
-    }
-    
+    .hero-teksti { text-align: center; }
+    .hero-container h1 { font-size: 2rem; }
     .vasen { left: 10px; }
     .oikea { right: 10px; }
+    
+    .hero-yhteystiedot {
+        align-items: center;
+        margin-top: 25px;
+    }
 }
 
 @media screen and (max-width: 480px) {
-    .lomake-container {
-        padding: 25px 15px;
-    }
-    
-    .lomake-container h2 {
-        font-size: 1.8rem;
-    }
+    .lomake-container { padding: 25px 15px; }
+    .lomake-container h2 { font-size: 1.8rem; }
+}
+
+/* KUVAGALLERIAN SIIRTYMÄEFEKTIT */
+
+/* Uusi kuva odottaa reunan takana näkymättömänä korkealla tasolla (z-index: 3) */
+.slide-in-right {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 3 !important;
+}
+
+.slide-in-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 3 !important;
+}
+
+/* Vanha kuva poistuu ja haalistuu matalalla tasolla */
+.slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 1 !important;
+}
+
+.slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1 !important;
 }
