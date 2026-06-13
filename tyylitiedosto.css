@@ -9,6 +9,21 @@
 body {
     background-color: #0b131f;
     color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NÄKYMIEN HALLINTA (PIILOTUS JA NÄYTTÄMINEN) */
+.sivu-nakyma {
+    display: none; /* Kaikki näkymät piiloon oletuksena */
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.sivu-nakyma.active-nakyma {
+    display: flex; /* Vain aktiivinen näkymä näytetään */
 }
 
 /* NAVIGOINTIPALKKI */
@@ -66,7 +81,8 @@ body {
     transition: all 0.3s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: #ccff00;
 }
 
@@ -95,14 +111,9 @@ body {
     cursor: pointer;
 }
 
-/* KOTI-SIVUN PÄÄSISÄLTÖ */
-.hero-osio {
+/* KOTI / HERO -OSION SISÄLTÖ */
+#koti {
     background: linear-gradient(to bottom, rgba(11, 19, 31, 0.6), rgba(11, 19, 31, 0.95)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200') no-repeat center center/cover;
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
 }
 
 .hero-container {
@@ -194,7 +205,6 @@ body {
     transform: translateX(0);
 }
 
-/* NUOLIPAINIKKEET */
 .nuoli-btn {
     position: absolute;
     top: 50%;
@@ -222,14 +232,60 @@ body {
 .vasen { left: -20px; }
 .oikea { right: -20px; }
 
-/* LOMAKE-OSIO */
-.lomake-osio {
-    background-color: #111a2e;
-    padding: 80px 20px;
+/* PALVELUT-OSION SISÄLTÖ */
+#palvelut {
+    background-color: #0b131f;
+}
+
+.palvelut-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+#palvelut h2 {
+    font-size: 2.5rem;
+    color: #ccff00;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.palvelut-ruudukko {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 2px solid rgba(204, 255, 0, 0.1);
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.palvelu-kortti {
+    flex: 1;
+    background-color: #111a2e;
+    padding: 35px 24px; /* Hieman enemmän yläpehmustetta ikonin puuttuessa */
+    border-radius: 8px;
+    border-top: 4px solid #ccff00;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.palvelu-kortti:hover {
+    transform: translateY(-5px);
+}
+
+/* Ikoneihin liittyvät tyylit poistettu siisteyden vuoksi */
+
+.palvelu-kortti h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.palvelu-kortti p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+/* LOMAKE- JA YHTEYSTIEDOT-OSIOT */
+#lomake, #yhteystiedot {
+    background-color: #111a2e;
 }
 
 .lomake-container {
@@ -331,39 +387,35 @@ body {
         transition: all 0.5s ease;
         background-color: #111a2e;
         list-style: none;
-        height: auto;
     }
 
     .nav-menu.active {
         top: 80px; 
         opacity: 1;
-        transition: all 0.5s ease;
         z-index: 99;
-        height: auto;
         padding-bottom: 20px;
     }
 
     .nav-item {
         width: 100%;
         height: 60px;
-        display: block;
     }
 
     .nav-link {
-        text-align: center;
-        padding: 2rem;
+        justify-content: center;
         width: 100%;
-        display: table;
     }
 
     .btn-login {
         margin: 10px auto 0 auto;
-        display: block;
         width: 80%;
-        text-align: center;
     }
 
     .nav-toggle { display: block; }
+
+    .sivu-nakyma {
+        padding: 40px 15px;
+    }
 
     .hero-container {
         flex-direction: column; 
@@ -372,45 +424,22 @@ body {
     }
     
     .hero-teksti { text-align: center; }
-    .hero-container h1 { font-size: 2rem; }
+    .hero-container h1 { font-size: 2.2rem; }
     .vasen { left: 10px; }
     .oikea { right: 10px; }
     
     .hero-yhteystiedot {
         align-items: center;
-        margin-top: 25px;
+    }
+
+    .palvelut-ruudukko {
+        flex-direction: column;
+        gap: 20px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .lomake-container { padding: 25px 15px; }
-    .lomake-container h2 { font-size: 1.8rem; }
-}
-
-/* KUVAGALLERIAN SIIRTYMÄEFEKTIT */
-
-/* Uusi kuva odottaa reunan takana näkymättömänä korkealla tasolla (z-index: 3) */
-.slide-in-right {
-    transform: translateX(100%);
-    opacity: 0;
-    z-index: 3 !important;
-}
-
-.slide-in-left {
-    transform: translateX(-100%);
-    opacity: 0;
-    z-index: 3 !important;
-}
-
-/* Vanha kuva poistuu ja haalistuu matalalla tasolla */
-.slide-out-left {
-    transform: translateX(-100%);
-    opacity: 0;
-    z-index: 1 !important;
-}
-
-.slide-out-right {
-    transform: translateX(100%);
-    opacity: 0;
-    z-index: 1 !important;
-}
+/* KUVAGALLERIAN ANIMAATIOTUET */
+.slide-in-right { transform: translateX(100%); opacity: 0; z-index: 3 !important; }
+.slide-in-left { transform: translateX(-100%); opacity: 0; z-index: 3 !important; }
+.slide-out-left { transform: translateX(-100%); opacity: 0; z-index: 1 !important; }
+.slide-out-right { transform: translateX(100%); opacity: 0; z-index: 1 !important; }

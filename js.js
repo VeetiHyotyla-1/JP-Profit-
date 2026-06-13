@@ -1,13 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- MOBIILIVALIKON TOIMINNALLISUUS ---
-    const menu = document.querySelector('#mobile-menu');
+    // --- SPA-NÄKYMIEN VAIHTOLOOGIIKKA (TÄBITYS) ---
+    const navLinks = document.querySelectorAll(".nav-link[data-target], .nav-logo[data-target]");
+    const sivut = document.querySelectorAll(".sivu-nakyma");
     const menuLinks = document.querySelector('.nav-menu');
+    const menu = document.querySelector('#mobile-menu');
 
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            const targetId = link.getAttribute("data-target");
+            if (!targetId) return;
+
+            // 1. Poistetaan aktiivisuus kaikilta linkeiltä ja lisätään klikatulle
+            document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+            
+            // Jos klikattiin valikon linkkiä (eikä logoa), korostetaan se active-luokalla
+            if (link.classList.contains("nav-link")) {
+                link.classList.add("active");
+            } else {
+                // Jos klikattiin logoa, asetetaan "Koti"-linkki aktiiviseksi navigoinnissa
+                const kotiLinkki = document.querySelector(".nav-link[data-target='koti']");
+                if (kotiLinkki) kotiLinkki.classList.add("active");
+            }
+
+            // 2. Piilotetaan kaikki näkymät ja tuodaan haluttu esiin
+            sivut.forEach(sivu => {
+                sivu.classList.remove("active-nakyma");
+            });
+            
+            const kohdeSivu = document.getElementById(targetId);
+            if (kohdeSivu) {
+                kohdeSivu.classList.add("active-nakyma");
+                // Kelataan sivu automaattisesti ylös, kun näkymä vaihtuu
+                window.scrollTo({ top: 0, behavior: "instant" });
+            }
+
+            // 3. Suljetaan mobiilivalikko automaattisesti klikkauksen jälkeen (jos se on auki)
+            if (menuLinks && menuLinks.classList.contains('active')) {
+                menuLinks.classList.remove('active');
+                if (menu) {
+                    menu.classList.remove('is-active');
+                    const icon = menu.querySelector("i");
+                    if (icon) {
+                        icon.classList.add("fa-bars");
+                        icon.classList.remove("fa-times");
+                    }
+                }
+            }
+        });
+    });
+
+    // --- MOBIILIVALIKON TOIMINNALLISUUS ---
     if (menu && menuLinks) {
         menu.addEventListener('click', () => {
             menu.classList.toggle('is-active');
             menuLinks.classList.toggle('active');
+            
+            // Vaihdetaan myös hampurilaisikoni ruksiksi ja toisinpäin, jos käytössä
+            const icon = menu.querySelector("i");
+            if (icon) {
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-times");
+            }
             console.log('Mobiilivalikkoa klikattu!'); 
         });
     }
@@ -36,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             uusiKuva.style.transition = "none";
             uusiKuva.classList.add(saapumisLuokka);
 
-            // Pakotetaan alémman tason tyylipäivitys (reflow)
+            // Pakotetaan alemman tason tyylipäivitys (reflow)
             uusiKuva.offsetHeight;
 
             // 2. Animoidaan uusi kuva sisään ja vanha kuva ulos tieltä
