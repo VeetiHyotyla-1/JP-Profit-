@@ -15,7 +15,7 @@
                 <li class="nav-item"><a href="#" class="nav-link active" data-target="koti">Koti</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-target="palvelut">Palvelut</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-target="lomake">Lomake</a></li>
-                <li class="nav-item"><a href="#" class="nav-link btn-login">Kirjaudu</a></li>
+                <li class="nav-item"><a href="#" class="nav-link btn-login" data-target="kirjautuminen">Kirjaudu</a></li>
             </ul>
             <div class="nav-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -100,6 +100,30 @@
                 </div>
                 
                 <button type="submit" class="btn-laheta">Lähetä tarjouspyyntö</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="sivu-nakyma" id="kirjautuminen">
+        <div class="lomake-container" style="max-width: 450px;">
+            <h2>Kirjaudu sisään</h2>
+            <p>Syötä tunnuksesi päästäksesi hallintapaneeliin.</p>
+            
+            <form class="tarjous-lomake" id="kirjautumis-lomake">
+                <div class="lomake-ryhmä">
+                    <label for="login-email">Sähköposti</label>
+                    <input type="email" id="login-email" required placeholder="nimi@osoite.fi">
+                </div>
+                
+                <div class="lomake-ryhmä">
+                    <label for="login-password">Salasana</label>
+                    <div style="position: relative; width: 100%;">
+                        <input type="password" id="login-password" required placeholder="••••••••" style="padding-right: 45px;">
+                        <i class="fas fa-eye" id="nayta-salasana" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #56698a; cursor: pointer; transition: color 0.2s;"></i>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-laheta">Kirjaudu</button>
             </form>
         </div>
     </section>

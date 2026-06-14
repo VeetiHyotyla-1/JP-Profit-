@@ -129,4 +129,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- KIRJAUTUMISLOMAKKEEN TOIMINNALLISUUS ---
+    const salasanaKentta = document.getElementById("login-password");
+    const silmaIconi = document.getElementById("nayta-salasana");
+    const loginLomake = document.getElementById("kirjautumis-lomake");
+
+    // Salasanan näkyvyyden vaihto (Silmä-ikoni)
+    if (silmaIconi && salasanaKentta) {
+        silmaIconi.addEventListener("click", () => {
+            if (salasanaKentta.type === "password") {
+                salasanaKentta.type = "text";
+                silmaIconi.classList.remove("fa-eye");
+                silmaIconi.classList.add("fa-eye-slash");
+            } else {
+                salasanaKentta.type = "password";
+                silmaIconi.classList.remove("fa-eye-slash");
+                silmaIconi.classList.add("fa-eye");
+            }
+        });
+    }
+
+    // Lomakkeen lähetysyrityksen käsittely
+    if (loginLomake) {
+        loginLomake.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value;
+            
+            console.log("Kirjautumisyritys sähköpostilla:", email);
+            alert("Kirjautumistoiminnallisuus liitetään taustajärjestelmään myöhemmin!");
+        });
+    }
+
 });
